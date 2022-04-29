@@ -38,12 +38,12 @@
       <!-- /.login-logo -->
       <div class="card">
         <div class="card-body login-card-body">
-          <p class="login-box-msg">Sign in to start your session</p>
+          <p class="login-box-msg">Silahkan Login</p>
           <?= $this->session->flashdata('message'); ?>
 
           <form action="<?= base_url('auth/login') ?>" method="post">
             <div class="input-group mb-3">
-              <input type="email" id="email" name="email" class="form-control" placeholder="Email" value="<?= set_value('email'); ?>" />
+              <input type="username" id="username" name="username" class="form-control" placeholder="Username" value="<?= set_value('username'); ?>" />
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-envelope"></span>
@@ -51,7 +51,7 @@
               </div>
             </div>
             <small class="text-danger">
-              <?= form_error('email'); ?>
+              <?= form_error('username'); ?>
             </small>
             <div class="input-group mb-3">
               <input
@@ -85,7 +85,7 @@
 
           <p class="mb-0 mt-1">
             <a href="<?= base_url('auth/register'); ?>" class="text-center"
-              >Register a new membership</a
+              >Daftar member baru</a
             >
           </p>
         </div>

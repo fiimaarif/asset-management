@@ -24,26 +24,13 @@
               <li class="nav-item">
                 <a href="<?=base_url('Dashboard') ?>" class="nav-link">
                   <i class="fas fa-home"></i>
-                  <p>Home</p>
-                </a>
-              </li>
-                
-              <li class="nav-item">
-                <a href="<?= base_url('user') ?>" class="nav-link">
-                  <i class="fas fa-users"></i>
-                  <p>Data Users</p>
+                  <p>Dashboard</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?= base_url('Category') ?>" class="nav-link navbar-info active">
+                <a href="<?=base_url('Aset') ?>" class="nav-link">
                   <i class="fas fa-folder"></i>
-                  <p>Asset Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?=base_url('Department') ?>" class="nav-link">
-                  <i class="fas fa-folder-open"></i>
-                  <p>Department</p>
+                  <p>Asset</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -53,9 +40,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?=base_url('Aset') ?>" class="nav-link">
-                  <i class="fas fa-folder"></i>
-                  <p>Data Asset</p>
+                <a href="<?= base_url('user') ?>" class="nav-link navbar-info active">
+                  <i class="fas fa-users"></i>
+                  <p>Admin</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -84,62 +71,55 @@
             <div class="row mb-2">
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-left">
-                  <li class="breadcrumb-item"><a href="<?= base_url('Category') ?>">Category</a></li>
-                  <li class="breadcrumb-item active">tambah</li>
+                  <li class="breadcrumb-item"><a href="<?= base_url('user') ?>">User</a></li>
+                  <li class="breadcrumb-item active">edit</li>
                 </ol>
               </div>
-              <!-- /.col -->
-
-              <!-- /.col -->
             </div>
-            <!-- /.row -->
           </div>
-          <!-- /.container-fluid -->
         </div>
-        <!-- /.content-header -->
 
         <!-- Main content -->
         <div class="content">
           <div class="container-fluid">
-            <a href="<?= base_url('Category') ?>" class="btn btn-info mb-2">
+            <a href="<?= base_url('user') ?>" class="btn btn-info mb-2">
               <i class="fas fa-arrow-left"></i>
                 Kembali
             </a>
            <div class="card p-2">
-             <div class="card-header bg-info">
-              <h5 class="text-center"> <strong>Tambah Category Baru</strong></h5> 
+              <div class="card-header bg-info">
+              <h5 class="text-center"> <strong>Edit Admin</strong></h5> 
              </div>
-              <!-- error message -->
-             
-
-            <?= form_open_multipart('Category/tambah'); ?>
+             <?= form_open_multipart('user/edit'); ?>
+             <input type="hidden" name="id" value="<?= $user['id'] ?>">
               <div class="form-group">
-                <label for="category_code">Kode Kategori</label>
-                <input type="number" class="form-control" id="category_code" name="category_code" placeholder="Masukkan Kode Kategori">
-                <small class="form-text text-danger"><?= form_error('category_code') ?></small>
+                <label for="fullname">Full Name</label>
+                <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Masukkan Fulll Name" value="<?= $user['fullname']; ?>">
+                <small class="form-text text-danger"><?= form_error('fullname') ?></small>
               </div>
-              
               <div class="form-group">
-                <label for="category_name">Nama Kategori</label>
-                <input type="text" class="form-control" id="category_name" name="category_name" placeholder="Masukkan Nama Kategori">
-                <small class="form-text text-danger"><?= form_error('category_name') ?></small>
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Username" value="<?= $user['username']; ?>">
+                <small class="form-text text-danger"><?= form_error('username') ?></small>
               </div>
-            <button type="submit" class="btn btn-primary mt-3"><i class="fas fa-plus"></i> Tambah</button>
+              <div class="form-group">
+                <label for="level">Level</label>
+                <select type="level" class="form-control" name="level" id="level" aria-label="Default select example">
+                  <option selected  value="<?= $user['level']; ?>"><?= $user['level']; ?></option>
+                  <option value="admin">Admin</option>
+                  <option value="user">User</option>
+                </select>
+              <small class="form-text text-danger"><?= form_error('level') ?></small>
+              </div>
+              <button type="submit" class="btn btn-primary mt-3"><i class="fas fa-edit"></i> Edit</button>
             </form>
             </div>
-            <!-- /.row -->
           </div>
-          <!-- /.container-fluid -->
         </div>
-        <!-- /.content -->
       </div>
-      <!-- /.content-wrapper -->
-
       <!-- Control Sidebar -->
       <aside class="control-sidebar control-sidebar-dark">
         <!-- Control sidebar content goes here -->
       </aside>
-      <!-- /.control-sidebar -->
-
   </body>
 </html>

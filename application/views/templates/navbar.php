@@ -12,7 +12,7 @@
         <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <div class="image user-panel">
-            <span class="hidden-xs mr-2">Hi, <?= $user['name']; ?></span>
+            <span class="hidden-xs mr-2">Hi, <?= $user['fullname']; ?></span>
               <img
                 src="<?= base_url('assets/images/profil/').$user['image']; ?>"
                 class="img-circle"
@@ -21,7 +21,7 @@
             </div>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header"><?= $user['name']; ?></span>
+          <span class="dropdown-item dropdown-header"><?= $user['fullname']; ?></span>
           <div class="dropdown-divider"></div>
           <a href="<?= base_url('auth/logout') ?>" class="dropdown-item">
             <i class="fas fa-sign-out-alt mr-2"></i> Logout

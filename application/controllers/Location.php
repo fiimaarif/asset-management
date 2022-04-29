@@ -15,8 +15,8 @@ class Location extends CI_Controller {
 
 	public function index()
 	{
-		$data['user'] = $this->db->get_where('user', ['email' =>
-		$this->session->userdata('email')])->row_array();
+		$data['user'] = $this->db->get_where('user', ['username' =>
+		$this->session->userdata('username')])->row_array();
 
 		$data2['location'] = $this->Location_model->getAllLocation();
 
@@ -29,8 +29,8 @@ class Location extends CI_Controller {
 
 	public function tambah(){
 
-		$data['user'] = $this->db->get_where('user', ['email' =>
-		$this->session->userdata('email')])->row_array();
+		$data['user'] = $this->db->get_where('user', ['username' =>
+		$this->session->userdata('username')])->row_array();
 
 		$this->form_validation->set_rules('location_code', 'Kode Kategori', 'required|trim|is_unique[location.location_code]');
 		$this->form_validation->set_rules('location_name', 'Nama Kategori', 'required|trim');
@@ -56,12 +56,12 @@ class Location extends CI_Controller {
 
 	public function edit($id = null){
 
-		$data['user'] = $this->db->get_where('user', ['email' =>
-		$this->session->userdata('email')])->row_array();
+		$data['user'] = $this->db->get_where('user', ['username' =>
+		$this->session->userdata('username')])->row_array();
 
 		$data['location'] = $this->Location_model->getDataById($id);
 
-		$this->form_validation->set_rules('location_code', 'Kode Kategori', 'required|trim|is_unique[location.location_code]');
+		$this->form_validation->set_rules('location_code', 'Kode Kategori', 'required|trim');
 		$this->form_validation->set_rules('location_name', 'Nama Kategori', 'required|trim');
 		if($this->form_validation->run() === false) {
 			$this->load->view('templates/header.php');

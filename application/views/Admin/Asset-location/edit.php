@@ -24,26 +24,13 @@
               <li class="nav-item">
                 <a href="<?=base_url('Dashboard') ?>" class="nav-link">
                   <i class="fas fa-home"></i>
-                  <p>Home</p>
-                </a>
-              </li>
-                
-              <li class="nav-item">
-                <a href="<?= base_url('user') ?>" class="nav-link">
-                  <i class="fas fa-users"></i>
-                  <p>Data Users</p>
+                  <p>Dashboard</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?= base_url('Location') ?>" class="nav-link">
+                <a href="<?=base_url('Aset') ?>" class="nav-link">
                   <i class="fas fa-folder"></i>
-                  <p>Asset Location</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?=base_url('Department') ?>" class="nav-link">
-                  <i class="fas fa-folder-open"></i>
-                  <p>Department</p>
+                  <p>Asset</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -53,9 +40,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?=base_url('Aset') ?>" class="nav-link">
-                  <i class="fas fa-folder"></i>
-                  <p>Data Asset</p>
+                <a href="<?= base_url('user') ?>" class="nav-link">
+                  <i class="fas fa-users"></i>
+                  <p>Admin</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -66,7 +53,7 @@
               </li>
               <div class="dropdown-divider mt-5"></div>
               <li class="nav-item text-center">
-                <a href="<?= base_url('auth/logout') ?>" class="nav-link">
+                <a href="<?=base_url('auth/logout') ?>" class="nav-link">
                   <i class="fas fa-power-off text-danger"></i>
                   <p class="text-danger"><strong>Logout</strong></p>
                 </a>
@@ -101,17 +88,17 @@
             </a>
            <div class="card p-2">
               <div class="card-header bg-info">
-              <h5 class="text-center"> <strong>Edit Location</strong></h5> 
+              <h5 class="text-center"> <strong>Edit Ruangan</strong></h5> 
              </div>
              <?= form_open_multipart('location/edit'); ?>
              <input type="hidden" name="id" value="<?= $location['id'] ?>">
               <div class="form-group">
-                <label for="location_code">Kode Kategori</label>
-                <input type="number" class="form-control" id="location_code" name="location_code" placeholder="Masukkan Kode Lokasi" value="<?= $location['location_code']; ?>">
+                <label for="location_code">Kode Ruangan</label>
+                <input type="text" class="form-control" id="location_code" name="location_code" placeholder="Masukkan Kode Lokasi" value="<?= $location['location_code']; ?>">
                 <small class="form-text text-danger"><?= form_error('location_code') ?></small>
               </div>
               <div class="form-group">
-                <label for="location_name">Deskripsi</label>
+                <label for="location_name">Nama Ruangan</label>
                 <input type="text" class="form-control" id="location_name" name="location_name" placeholder="Masukkan Nama Lokasi" value="<?= $location['location_name']; ?>">
                 <small class="form-text text-danger"><?= form_error('location_name') ?></small>
               </div>

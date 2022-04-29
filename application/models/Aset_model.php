@@ -3,7 +3,11 @@
 class Aset_model extends CI_Model {
     public function getAllAset(){
         return $this->db->get('aset')->result_array();
-         
+    }
+    public function getAllData(){
+        return $this->db->get('category')->result_array();
+        return $this->db->get('location')->result_array();
+        return $this->db->get('department')->result_array();
     }
     public function hapusData($id){
         $this->db->where('id', $id);

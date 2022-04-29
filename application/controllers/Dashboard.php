@@ -18,20 +18,8 @@ class Dashboard extends CI_Controller {
 			[
 				'box' 		=> 'info',
 				'total' 	=> $this->Dashboard_model->total('user'),
-				'title'		=> 'Users',
+				'title'		=> 'Admin',
 				'icon'		=> 'fas fa-users'
-			],
-			[
-				'box' 		=> 'danger',
-				'total' 	=> $this->Dashboard_model->total('category'),
-				'title'		=> 'Asset Category',
-				'icon'		=> 'fas fa-folder'
-			],
-			[
-				'box' 		=> 'success',
-				'total' 	=> $this->Dashboard_model->total('department'),
-				'title'		=> 'Department',
-				'icon'		=> 'fas fa-folder-open'
 			],
 			[
 				'box' 		=> 'warning',
@@ -40,7 +28,7 @@ class Dashboard extends CI_Controller {
 				'icon'		=> 'fas fa-folder-plus'
 			],
 			[
-				'box' 		=> 'primary',
+				'box' 		=> 'danger',
 				'total' 	=> $this->Dashboard_model->total('aset'),
 				'title'		=> 'Data Asset',
 				'icon'		=> 'fas fa-folder'
@@ -52,8 +40,8 @@ class Dashboard extends CI_Controller {
 
 	public function index()
 	{
-		$data['user'] = $this->db->get_where('user', ['email' =>
-		$this->session->userdata('email')])->row_array();
+		$data['user'] = $this->db->get_where('user', ['username' =>
+		$this->session->userdata('username')])->row_array();
 		$box['info_box'] = $this->admin_box();
 		$this->load->view('templates/header.php');
 		$this->load->view('templates/navbar.php',$data);

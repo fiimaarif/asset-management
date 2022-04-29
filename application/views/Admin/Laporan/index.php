@@ -22,26 +22,13 @@
               <li class="nav-item">
                 <a href="<?=base_url('Dashboard') ?>" class="nav-link">
                   <i class="fas fa-home"></i>
-                  <p>Home</p>
-                </a>
-              </li>
-                
-              <li class="nav-item">
-                <a href="<?= base_url('user') ?>" class="nav-link">
-                  <i class="fas fa-users"></i>
-                  <p>Data Users</p>
+                  <p>Dashboard</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?= base_url('Category') ?>" class="nav-link">
+                <a href="<?=base_url('Aset') ?>" class="nav-link">
                   <i class="fas fa-folder"></i>
-                  <p>Asset Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?=base_url('Department') ?>" class="nav-link">
-                  <i class="fas fa-folder-open"></i>
-                  <p>Department</p>
+                  <p>Asset</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -51,9 +38,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?=base_url('Aset') ?>" class="nav-link">
-                  <i class="fas fa-folder"></i>
-                  <p>Data Asset</p>
+                <a href="<?= base_url('user') ?>" class="nav-link">
+                  <i class="fas fa-users"></i>
+                  <p>Admin</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -64,7 +51,7 @@
               </li>
               <div class="dropdown-divider mt-5"></div>
               <li class="nav-item text-center">
-                <a href="<?= base_url('auth/logout') ?>" class="nav-link">
+                <a href="<?=base_url('auth/logout') ?>" class="nav-link">
                   <i class="fas fa-power-off text-danger"></i>
                   <p class="text-danger"><strong>Logout</strong></p>
                 </a>
@@ -105,15 +92,17 @@
           <div class="container-fluid">
             <div class="card p-2">
               <div class="card-header bg-info mb-1">
-              <h5 class="text-center">Data Asset</h5>
+              <h5 class="text-center">Laporan Data Asset</h5>
               </div>
               <table class="table" id="laporanAset" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                   <tr>
                     <th scope="col">No</th>
-                    <th scope="col">Kategori</th>
-                    <th scope="col">Department</th>
-                    <th scope="col">Lokasi</th>
+                    <th scope="col">Nama Barang</th>
+                    <th scope="col">Kode Barang</th>
+                    <th scope="col">Satuan</th>
+                    <th scope="col">Kuantitas</th>
+                    <th scope="col">Kode Ruangan</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -121,9 +110,11 @@
                   <?php foreach($aset as $ast) : ?>
                   <tr>
                     <th scope="row"><?= $i; ?></th>
-                    <td><?= $ast['category'] ?></td>
-                    <td><?= $ast['department'] ?></td>
-                    <td><?= $ast['location'] ?></td>
+                    <td><?= $ast['nama_barang'] ?></td>
+                    <td><?= $ast['kode_barang'] ?></td>
+                    <td><?= $ast['satuan'] ?></td>
+                    <td><?= $ast['kuantitas'] ?></td>
+                    <td><?= $ast['kode_ruangan'] ?></td>
                   </tr>
                   <?php $i++; ?>
                   <?php endforeach; ?>

@@ -38,11 +38,11 @@
 
       <div class="card">
         <div class="card-body register-card-body">
-          <p class="login-box-msg">Register a new membership</p>
+          <p class="login-box-msg">Daftar member baru</p>
 
           <form action="<?= base_url('auth/register'); ?>" method="post">
             <div class="input-group mb-3">
-              <input type="text" id="name" name="name" class="form-control" placeholder="Full name" value="<?= set_value('name'); ?>" />
+              <input type="text" id="username" name="username" class="form-control" placeholder="Username" value="<?= set_value('username'); ?>" />
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-user"></span>
@@ -50,11 +50,11 @@
               </div>
             </div>
             <small class="text-danger">
-              <?= form_error('name'); ?>
+              <?= form_error('username'); ?>
             </small>
             
             <div class="input-group mb-3">
-              <input type="text" id="email" name="email" class="form-control" placeholder="Email" value="<?= set_value('email'); ?>"  />
+              <input type="text" id="fullname" name="fullname" class="form-control" placeholder="Full Name" value="<?= set_value('fullname'); ?>"  />
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-envelope"></span>
@@ -62,7 +62,7 @@
               </div>
             </div>
             <small class="text-danger">
-              <?= form_error('email'); ?>
+              <?= form_error('fullname'); ?>
             </small>
             <div class="input-group mb-3">
               <input
@@ -107,7 +107,7 @@
           </form>
 
           <a href="<?= base_url('auth/login'); ?>" class="text-center"
-            >I already have a membership</a
+            >Sudah punya akun</a
           >
         </div>
         <!-- /.form-box -->

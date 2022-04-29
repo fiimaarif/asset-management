@@ -24,26 +24,13 @@
               <li class="nav-item">
                 <a href="<?=base_url('Dashboard') ?>" class="nav-link">
                   <i class="fas fa-home"></i>
-                  <p>Home</p>
-                </a>
-              </li>
-                
-              <li class="nav-item">
-                <a href="<?= base_url('user') ?>" class="nav-link">
-                  <i class="fas fa-users"></i>
-                  <p>Data Users</p>
+                  <p>Dashboard</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?= base_url('Category') ?>" class="nav-link">
+                <a href="<?=base_url('Aset') ?>" class="nav-link">
                   <i class="fas fa-folder"></i>
-                  <p>Asset Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?=base_url('Department') ?>" class="nav-link">
-                  <i class="fas fa-folder-open"></i>
-                  <p>Department</p>
+                  <p>Asset</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -53,9 +40,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?=base_url('Aset') ?>" class="nav-link">
-                  <i class="fas fa-folder"></i>
-                  <p>Data Asset</p>
+                <a href="<?= base_url('user') ?>" class="nav-link">
+                  <i class="fas fa-users"></i>
+                  <p>Admin</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -66,7 +53,7 @@
               </li>
               <div class="dropdown-divider mt-5"></div>
               <li class="nav-item text-center">
-                <a href="<?= base_url('auth/logout') ?>" class="nav-link">
+                <a href="<?=base_url('auth/logout') ?>" class="nav-link">
                   <i class="fas fa-power-off text-danger"></i>
                   <p class="text-danger"><strong>Logout</strong></p>
                 </a>
@@ -107,15 +94,15 @@
           <div class="container-fluid">
             <a href="<?= base_url('Location/tambah') ?>" class="btn btn-info mb-2">
               <i class="fas fa-plus"></i>
-                Tambah
+                Input Asset Location
             </a>
             <div class="card p-2">
               <table class="table" id="example" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                   <tr>
                     <th scope="col">No</th>
-                    <th scope="col">Kode Lokasi</th>
-                    <th scope="col">Nama Lokasi</th>
+                    <th scope="col">Kode Ruangan</th>
+                    <th scope="col">Nama Ruangan</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>

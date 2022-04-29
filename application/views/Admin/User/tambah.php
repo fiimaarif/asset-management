@@ -9,10 +9,7 @@
            style="opacity: .8">
             <span class="brand-text font-weight-light"><strong>Asset Management</strong></span>
           </a>
-        <!-- Sidebar -->
         <div class="sidebar">
-
-          <!-- Sidebar Menu -->
           <nav class="mt-2">
             <ul
               class="nav nav-pills nav-sidebar flex-column"
@@ -24,26 +21,13 @@
               <li class="nav-item">
                 <a href="<?=base_url('Dashboard') ?>" class="nav-link">
                   <i class="fas fa-home"></i>
-                  <p>Home</p>
-                </a>
-              </li>
-                
-              <li class="nav-item">
-                <a href="<?= base_url('user') ?>" class="nav-link">
-                  <i class="fas fa-users"></i>
-                  <p>Data Users</p>
+                  <p>Dashboard</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?= base_url('Category') ?>" class="nav-link navbar-info active">
+                <a href="<?=base_url('Aset') ?>" class="nav-link">
                   <i class="fas fa-folder"></i>
-                  <p>Asset Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?=base_url('Department') ?>" class="nav-link">
-                  <i class="fas fa-folder-open"></i>
-                  <p>Department</p>
+                  <p>Asset</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -53,9 +37,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?=base_url('Aset') ?>" class="nav-link">
-                  <i class="fas fa-folder"></i>
-                  <p>Data Asset</p>
+                <a href="<?= base_url('user') ?>" class="nav-link navbar-info active">
+                  <i class="fas fa-users"></i>
+                  <p>Admin</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -84,8 +68,8 @@
             <div class="row mb-2">
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-left">
-                  <li class="breadcrumb-item"><a href="<?= base_url('Category') ?>">Category</a></li>
-                  <li class="breadcrumb-item active">edit</li>
+                  <li class="breadcrumb-item"><a href="<?= base_url('user') ?>">Admin</a></li>
+                  <li class="breadcrumb-item active">tambah</li>
                 </ol>
               </div>
             </div>
@@ -95,35 +79,48 @@
         <!-- Main content -->
         <div class="content">
           <div class="container-fluid">
-            <a href="<?= base_url('category') ?>" class="btn btn-info mb-2">
+            <a href="<?= base_url('user') ?>" class="btn btn-info mb-2">
               <i class="fas fa-arrow-left"></i>
                 Kembali
             </a>
            <div class="card p-2">
-              <div class="card-header bg-info">
-              <h5 class="text-center"> <strong>Edit Category</strong></h5> 
+             <div class="card-header bg-info">
+              <h5 class="text-center"> <strong>Tambah Admin Baru</strong></h5> 
              </div>
-             <?= form_open_multipart('category/edit'); ?>
-             <input type="hidden" name="id" value="<?= $category['id'] ?>">
+              <!-- error message -->
+             
+
+            <?= form_open_multipart('user/tambah'); ?>
               <div class="form-group">
-                <label for="category_code">Kode Kategori</label>
-                <input type="number" class="form-control" id="category_code" name="category_code" placeholder="Masukkan Kode Kategori" value="<?= $category['category_code']; ?>">
-                <small class="form-text text-danger"><?= form_error('category_code') ?></small>
+                <label for="fullname">Full Name</label>
+                <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Masukkan Fulll Name">
+                <small class="form-text text-danger"><?= form_error('fullname') ?></small>
               </div>
               <div class="form-group">
-                <label for="category_name">Deskripsi</label>
-                <input type="text" class="form-control" id="category_name" name="category_name" placeholder="Masukkan Nama Kategori" value="<?= $category['category_name']; ?>">
-                <small class="form-text text-danger"><?= form_error('category_name') ?></small>
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan Username">
+                <small class="form-text text-danger"><?= form_error('username') ?></small>
               </div>
-              <button type="submit" class="btn btn-primary mt-3"><i class="fas fa-edit"></i> Edit</button>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="text" class="form-control" id="password" name="password" placeholder="Masukkan Password">
+                <small class="form-text text-danger"><?= form_error('password') ?></small>
+              </div>
+              <div class="form-group">
+                <label for="level">Level</label>
+                <select type="level" class="form-control" name="level" id="level" aria-label="Default select example">
+                  <option selected>Pilih Level </option>
+                  <option value="admin">Admin</option>
+                  <option value="user">User</option>
+                </select>
+              <small class="form-text text-danger"><?= form_error('level') ?></small>
+              </div>
+            <button type="submit" class="btn btn-primary mt-3"><i class="fas fa-plus"></i> Tambah</button>
             </form>
             </div>
-            <!-- /.row -->
           </div>
-          <!-- /.container-fluid -->
         </div>
       </div>
-      <!-- Control Sidebar -->
       <aside class="control-sidebar control-sidebar-dark">
       </aside>
   </body>

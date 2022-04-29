@@ -21,26 +21,13 @@
               <li class="nav-item">
                 <a href="<?=base_url('Dashboard') ?>" class="nav-link">
                   <i class="fas fa-home"></i>
-                  <p>Home</p>
-                </a>
-              </li>
-                
-              <li class="nav-item">
-                <a href="<?= base_url('user') ?>" class="nav-link">
-                  <i class="fas fa-users"></i>
-                  <p>Data Users</p>
+                  <p>Dashboard</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?= base_url('Category') ?>" class="nav-link">
+                <a href="<?=base_url('Aset') ?>" class="nav-link navbar-info active">
                   <i class="fas fa-folder"></i>
-                  <p>Asset Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?=base_url('Location') ?>" class="nav-link">
-                  <i class="fas fa-folder-open"></i>
-                  <p>Location</p>
+                  <p>Asset</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -50,9 +37,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?=base_url('Aset') ?>" class="nav-link navbar-info active">
-                  <i class="fas fa-folder"></i>
-                  <p>Data Asset</p>
+                <a href="<?= base_url('user') ?>" class="nav-link">
+                  <i class="fas fa-users"></i>
+                  <p>Admin</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -63,7 +50,7 @@
               </li>
               <div class="dropdown-divider mt-5"></div>
               <li class="nav-item text-center">
-                <a href="<?= base_url('auth/logout') ?>" class="nav-link">
+                <a href="<?=base_url('auth/logout') ?>" class="nav-link">
                   <i class="fas fa-power-off text-danger"></i>
                   <p class="text-danger"><strong>Logout</strong></p>
                 </a>
@@ -98,27 +85,42 @@
             </a>
            <div class="card p-2">
              <div class="card-header bg-info">
-              <h5 class="text-center"> <strong>Tambah Location Baru</strong></h5> 
+              <h5 class="text-center"> <strong>Tambah Data Aset Baru</strong></h5> 
              </div>
               <!-- error message -->
              
 
             <?= form_open_multipart('Aset/tambah'); ?>
               <div class="form-group">
-                <label for="category">Kategori Aset</label>
-                <input type="text" class="form-control" id="category" name="category" placeholder="Masukkan Kategori Aset">
-                <small class="form-text text-danger"><?= form_error('category') ?></small>
-              </div>
-              
-              <div class="form-group">
-                <label for="department">Department</label>
-                <input type="text" class="form-control" id="department" name="department" placeholder="Masukkan Nama Department">
-                <small class="form-text text-danger"><?= form_error('department') ?></small>
+                <label for="nama_barang">Nama Barang</label>
+                <input type="text" class="form-control" id="nama_barang" name="nama_barang" placeholder="Masukkan Nama Barang">
+                <small class="form-text text-danger"><?= form_error('nama_barang') ?></small>
               </div>
               <div class="form-group">
-                <label for="location">Lokasi Aset</label>
-                <input type="text" class="form-control" id="location" name="location" placeholder="Masukkan Nama Lokasi">
-                <small class="form-text text-danger"><?= form_error('location') ?></small>
+                <label for="kode_barang">Kode Barang</label>
+                <input type="text" class="form-control" id="kode_barang" name="kode_barang" placeholder="Masukkan Kode Barang">
+              <small class="form-text text-danger"><?= form_error('kode_barang') ?></small>
+              </div>
+              <div class="form-group">
+                <label for="satuan">Satuan</label>
+                <input type="text" class="form-control" id="satuan" name="satuan" placeholder="Masukkan Satuan">
+              <small class="form-text text-danger"><?= form_error('satuan') ?></small>
+              </div>
+              <div class="form-group">
+                <label for="kuantitas">Kuantitas</label>
+                <input type="number" class="form-control" id="kuantitas" name="kuantitas" placeholder="Masukkan kuantitas">
+              <small class="form-text text-danger"><?= form_error('kuantitas') ?></small>
+              </div>
+              <div class="form-group">
+                <label for="kode_ruangan">Kode Ruangan</label>
+                <select type="text" class="form-control" name="kode_ruangan" id="kode_ruangan" aria-label="Default select example">
+                  <option selected>Pilih Kode Ruangan </option>
+                  <option value="Pelayanan">Pelayanan</option>
+                  <option value="Penagihan">Penagihan</option>
+                  <option value="Pembukuan">Pembukuan</option>
+                  <option value="Personalia">Personalia</option>
+                </select>
+              <small class="form-text text-danger"><?= form_error('kode_ruangan') ?></small>
               </div>
             <button type="submit" class="btn btn-primary mt-3"><i class="fas fa-plus"></i> Tambah</button>
             </form>

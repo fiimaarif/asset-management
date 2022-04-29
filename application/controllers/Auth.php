@@ -11,32 +11,30 @@ class Auth extends CI_Controller {
 
 	public function login()
 	{
-		$this->form_validation->set_rules('email', 'Email','required|trim|valid_email');
+		$this->form_validation->set_rules('username', 'Username','required|trim');
 		$this->form_validation->set_rules('password', 'Password','required|trim');
 		if($this->form_validation->run()=== false){
-			$this->load->view('Auth/index.php');
+			$this->load->view('Auth/login.php');
 		}else{
 			$this->_loginSuccess();
 		}
 	}
 
 	private function _loginSuccess(){
-		$email = $this->input->post('email');
+		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 
-		$user = $this->db->get_where('user', ['email' => $email])->row_array();
+		$user = $this->db->get_where('user', ['username' => $username])->row_array();
 		// Jika usernya ada
 		if($user){
-			// Jika usernya aktif
-			if($user['is_active'] == 1){
 				// cek password
 				if(password_verify($password, $user['password'])){
 					$data = [
-						'email' => $user['email'],
+						'username' => $user['username'],
 						'role_id' => $user['role_id'],
 					];
 					$this->session->set_userdata($data);
-					if($user['role_id'] == 1){
+					if($user['role_id'] == 'admin'){
 						$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
 						Berhasil Login
 						</div>');
@@ -45,24 +43,18 @@ class Auth extends CI_Controller {
 						$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
 						Berhasil Login
 						</div>');
-						redirect('member');
+						redirect('dashboard');
 					}
 				}else{
 					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-					Wrong Password!
+					Password salah!
 					</div>');
 					redirect('auth/login');
 				}
 
-			}else{
-			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-			This email has not been activated!
-			</div>');
-			redirect('auth/login');
-			}
 		}else{
 			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-			Email is not registered!
+			Username tidak terdaftar
 			</div>');
 			redirect('auth/login');
 		}
@@ -70,37 +62,35 @@ class Auth extends CI_Controller {
 
 	public function register()
 	{
-		$this->form_validation->set_rules('name','Full Name','required|trim');
-		$this->form_validation->set_rules('email','Email','required|trim|valid_email|is_unique[user.email]', [
-			'is_unique' => 'Email sudah terdaftar, coba yang lain !'
+		$this->form_validation->set_rules('username','Username','required|trim|is_unique[user.username]', [
+			'is_unique' => 'Username sudah terdaftar, coba yang lain !'
 		]);
+		$this->form_validation->set_rules('fullname','Full Name','required|trim');
 		$this->form_validation->set_rules('password1','Password','required|trim|min_length[6]|matches[password2]',[
 			'matches' => 'Password tidak sesuai',
 			'min_length' => 'Password terlalu pendek, min.6 karakter'
 		]);
 		$this->form_validation->set_rules('password2','Password','required|trim|matches[password1]');
 		if($this->form_validation->run()=== false){
-			$this->load->view('Auth/index.php');
+			$this->load->view('Auth/register.php');
 		}else{
 			$data = [
-				'name' => htmlspecialchars($this->input->post('name',true)),
-				'email' => htmlspecialchars($this->input->post('email',true)),
+				'username' => htmlspecialchars($this->input->post('username',true)),
+				'fullname' => htmlspecialchars($this->input->post('fullname',true)),
 				'image' => 'default.png',
 				'password' => password_hash($this->input->post('password1'),PASSWORD_DEFAULT),
-				'role_id' => 1,
-				'is_active' => 1,
-				'date_created' => time()
+				'level' => 'admin'
 			];
 			$this->db->insert('user',$data);
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-			Congratulation! your account has been created. Please Login
+			Berhasil Mendaftar,Silahkan Login
 			</div>');
 			redirect('auth/login');
 		}
 	}
 
 	public function logout(){
-		$this->session->unset_userdata('email');
+		$this->session->unset_userdata('username');
 		$this->session->unset_userdata('role_id');
 		redirect('auth/login');
 	}

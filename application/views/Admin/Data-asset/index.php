@@ -21,26 +21,13 @@
               <li class="nav-item">
                 <a href="<?=base_url('Dashboard') ?>" class="nav-link">
                   <i class="fas fa-home"></i>
-                  <p>Home</p>
-                </a>
-              </li>
-                
-              <li class="nav-item">
-                <a href="<?= base_url('user') ?>" class="nav-link">
-                  <i class="fas fa-users"></i>
-                  <p>Data Users</p>
+                  <p>Dashboard</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?= base_url('Category') ?>" class="nav-link">
+                <a href="<?=base_url('Aset') ?>" class="nav-link navbar-info active">
                   <i class="fas fa-folder"></i>
-                  <p>Asset Category</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?=base_url('Department') ?>" class="nav-link">
-                  <i class="fas fa-folder-open"></i>
-                  <p>Department</p>
+                  <p>Asset</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -50,9 +37,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?=base_url('Aset') ?>" class="nav-link navbar-info active">
-                  <i class="fas fa-folder"></i>
-                  <p>Data Asset</p>
+                <a href="<?= base_url('user') ?>" class="nav-link">
+                  <i class="fas fa-users"></i>
+                  <p>Admin</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -92,7 +79,7 @@
             <div class="row mb-2">
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-left">
-                  <li class="breadcrumb-item active">Category</li>
+                  <li class="breadcrumb-item active">Aset</li>
                 </ol>
               </div>
             </div>
@@ -104,16 +91,18 @@
           <div class="container-fluid">
             <a href="<?= base_url('Aset/tambah') ?>" class="btn btn-info mb-2">
               <i class="fas fa-plus"></i>
-                Tambah
+                Input Asset
             </a>
             <div class="card p-2">
               <table class="table" id="example" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                   <tr>
                     <th scope="col">No</th>
-                    <th scope="col">Kategori</th>
-                    <th scope="col">Department</th>
-                    <th scope="col">Lokasi</th>
+                    <th scope="col">Nama Barang</th>
+                    <th scope="col">Kode Barang</th>
+                    <th scope="col">Satuan</th>
+                    <th scope="col">Kuantitas</th>
+                    <th scope="col">Kode Ruangan</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
@@ -122,9 +111,11 @@
                   <?php foreach($aset as $ast) : ?>
                   <tr>
                     <th scope="row"><?= $i; ?></th>
-                    <td><?= $ast['category'] ?></td>
-                    <td><?= $ast['department'] ?></td>
-                    <td><?= $ast['location'] ?></td>
+                    <td><?= $ast['nama_barang'] ?></td>
+                    <td><?= $ast['kode_barang'] ?></td>
+                    <td><?= $ast['satuan'] ?></td>
+                    <td><?= $ast['kuantitas'] ?></td>
+                    <td><?= $ast['kode_ruangan'] ?></td>
                     <td>
                       <a href="<?= base_url(); ?>aset/edit/<?= $ast['id']; ?>" class="btn btn-sm btn-info"><i class="fas fa-edit"></i> edit</a>
                       <a href="<?= base_url(); ?>aset/hapus/<?= $ast['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Hapus Data ? ');"><i class="far fa-trash-alt"></i> delete</a>
