@@ -42,8 +42,9 @@ class Dashboard extends CI_Controller {
 	{
 		$data['user'] = $this->db->get_where('user', ['username' =>
 		$this->session->userdata('username')])->row_array();
+		$datatitle['title'] = 'Asset Management | Dashboard';
 		$box['info_box'] = $this->admin_box();
-		$this->load->view('templates/header.php');
+		$this->load->view('templates/header.php',$datatitle);
 		$this->load->view('templates/navbar.php',$data);
 		$this->load->view('Admin/Dashboard/index', $box);
 		$this->load->view('templates/footer.php');

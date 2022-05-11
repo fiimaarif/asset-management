@@ -115,10 +115,9 @@
                 <label for="kode_ruangan">Kode Ruangan</label>
                 <select type="text" class="form-control" name="kode_ruangan" id="kode_ruangan" aria-label="Default select example">
                   <option selected>Pilih Kode Ruangan </option>
-                  <option value="Pelayanan">Pelayanan</option>
-                  <option value="Penagihan">Penagihan</option>
-                  <option value="Pembukuan">Pembukuan</option>
-                  <option value="Personalia">Personalia</option>
+                  <?php foreach($alldata as $data) : ?>
+                  <option value="<?= $data['location_code'] ?>"><?= $data['location_code'] ?></option>
+                  <?php endforeach; ?>
                 </select>
               <small class="form-text text-danger"><?= form_error('kode_ruangan') ?></small>
               </div>

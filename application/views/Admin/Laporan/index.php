@@ -1,5 +1,5 @@
 
-  <body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini">
 
       <!-- Main Sidebar Container -->
       <aside class="main-sidebar elevation-4 sidebar-dark-info">
@@ -95,6 +95,12 @@
               <h5 class="text-center">Laporan Data Asset</h5>
               </div>
               <table class="table" id="laporanAset" class="table table-striped table-bordered" style="width:100%">
+              <div class="">
+                <a href="<?= base_url('Aset/tambah') ?>" class="btn btn-warning mb-2">
+                    <i class="fas fa-file-alt"></i>
+                      Export PDF
+                    </a>
+              </div>
                 <thead>
                   <tr>
                     <th scope="col">No</th>

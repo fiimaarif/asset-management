@@ -21,8 +21,9 @@ class Aset extends CI_Controller {
 		$this->session->userdata('username')])->row_array();
 
 		$data2['aset'] = $this->Aset_model->getAllAset();
+		$datatitle['title'] = 'Asset Management | Data Aset';
 
-		$this->load->view('templates/header.php');
+		$this->load->view('templates/header.php',$datatitle);
 		$this->load->view('templates/navbar.php',$data);
 		$this->load->view('Admin/Data-asset/index',$data2);
 		$this->load->view('templates/footer.php');

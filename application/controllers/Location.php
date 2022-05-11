@@ -19,8 +19,9 @@ class Location extends CI_Controller {
 		$this->session->userdata('username')])->row_array();
 
 		$data2['location'] = $this->Location_model->getAllLocation();
+		$datatitle['title'] = 'Asset Management | Location';
 
-		$this->load->view('templates/header.php');
+		$this->load->view('templates/header.php',$datatitle);
 		$this->load->view('templates/navbar.php',$data);
 		$this->load->view('Admin/Asset-location/index', $data2);
 		$this->load->view('templates/footer.php');

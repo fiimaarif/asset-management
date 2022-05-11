@@ -17,10 +17,10 @@ class Laporan extends CI_Controller {
 	{
 		$data['user'] = $this->db->get_where('user', ['username' =>
 		$this->session->userdata('username')])->row_array();
-
+		$datatitle['title'] = 'Laporan Data Aset';
 		$aset['aset'] = $this->Laporan_model->getAllLaporan();
 
-		$this->load->view('templates/header.php');
+		$this->load->view('templates/header.php',$datatitle);
 		$this->load->view('templates/navbar.php',$data);
 		$this->load->view('Admin/Laporan/index',$aset);
 		$this->load->view('templates/footer.php');

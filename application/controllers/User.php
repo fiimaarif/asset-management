@@ -19,8 +19,9 @@ class User extends CI_Controller {
 		$this->session->userdata('username')])->row_array();
 
 		$data2['user'] = $this->User_model->getAllUser();
+		$datatitle['title'] = 'Asset Management | Admin';
 
-		$this->load->view('templates/header.php');
+		$this->load->view('templates/header.php',$datatitle);
 		$this->load->view('templates/navbar.php',$data);
 		$this->load->view('Admin/User/index',$data2);
 		$this->load->view('templates/footer.php');
