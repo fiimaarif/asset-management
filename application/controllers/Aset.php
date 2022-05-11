@@ -9,7 +9,6 @@ class Aset extends CI_Controller {
 		is_logged_in();
 
 		$this->load->model('Aset_model');
-		$this->load->model('Category_model');
 		$this->load->model('Location_model');
 		$this->load->library('form_validation');
 	}
@@ -35,6 +34,7 @@ class Aset extends CI_Controller {
 		$data['user'] = $this->db->get_where('user', ['username' =>
 		$this->session->userdata('username')])->row_array();
 		$data2['alldata'] = $this->Aset_model->getAllData();
+		$datatitle['title'] = 'Asset | Tambah';
 
 		$this->form_validation->set_rules('nama_barang', 'Nama Barang', 'required|trim');
 		$this->form_validation->set_rules('kode_barang', 'Kode Barang', 'required|trim');
@@ -42,7 +42,7 @@ class Aset extends CI_Controller {
 		$this->form_validation->set_rules('kuantitas', 'Kuantitas', 'required|trim');
 		$this->form_validation->set_rules('kode_ruangan', 'Kode Ruangan', 'required|trim');
 		if($this->form_validation->run() === false) {
-			$this->load->view('templates/header.php');
+			$this->load->view('templates/header.php',$datatitle);
 			$this->load->view('templates/navbar.php',$data);
 			$this->load->view('Admin/Data-asset/tambah.php',$data2);
 			$this->load->view('templates/footer.php');
@@ -70,6 +70,7 @@ class Aset extends CI_Controller {
 		$this->session->userdata('username')])->row_array();
 
 		$data['aset'] = $this->Aset_model->getDataById($id);
+		$datatitle['title'] = 'Asset | Edit';
 
 		
 		$this->form_validation->set_rules('nama_barang', 'Nama Barang', 'required|trim');
@@ -78,7 +79,7 @@ class Aset extends CI_Controller {
 		$this->form_validation->set_rules('kuantitas', 'Kuantitas', 'required|trim');
 		$this->form_validation->set_rules('kode_ruangan', 'Kode Ruangan', 'required|trim');
 		if($this->form_validation->run() === false) {
-			$this->load->view('templates/header.php');
+			$this->load->view('templates/header.php',$datatitle);
 			$this->load->view('templates/navbar.php',$data);
 			$this->load->view('Admin/Data-asset/edit.php', $data);
 			$this->load->view('templates/footer.php');

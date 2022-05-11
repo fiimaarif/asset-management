@@ -32,11 +32,12 @@ class Location extends CI_Controller {
 
 		$data['user'] = $this->db->get_where('user', ['username' =>
 		$this->session->userdata('username')])->row_array();
+		$datatitle['title'] = 'Asset Location | Tambah';
 
 		$this->form_validation->set_rules('location_code', 'Kode Kategori', 'required|trim|is_unique[location.location_code]');
 		$this->form_validation->set_rules('location_name', 'Nama Kategori', 'required|trim');
 		if($this->form_validation->run() === false) {
-			$this->load->view('templates/header.php');
+			$this->load->view('templates/header.php',$datatitle);
 			$this->load->view('templates/navbar.php',$data);
 			$this->load->view('Admin/Asset-location/tambah.php');
 			$this->load->view('templates/footer.php');
@@ -61,11 +62,12 @@ class Location extends CI_Controller {
 		$this->session->userdata('username')])->row_array();
 
 		$data['location'] = $this->Location_model->getDataById($id);
+		$datatitle['title'] = 'Asset Location | Edit';
 
 		$this->form_validation->set_rules('location_code', 'Kode Kategori', 'required|trim');
 		$this->form_validation->set_rules('location_name', 'Nama Kategori', 'required|trim');
 		if($this->form_validation->run() === false) {
-			$this->load->view('templates/header.php');
+			$this->load->view('templates/header.php',$datatitle);
 			$this->load->view('templates/navbar.php',$data);
 			$this->load->view('Admin/Asset-location/edit.php', $data);
 			$this->load->view('templates/footer.php');
