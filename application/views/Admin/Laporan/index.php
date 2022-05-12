@@ -92,15 +92,15 @@
           <div class="container-fluid">
             <div class="card p-2">
               <div class="card-header bg-info mb-1">
-              <h5 class="text-center">Laporan Data Asset</h5>
+              <h5 class="text-center">Laporan Data Aset</h5>
               </div>
               <table class="table" id="laporanAset" class="table table-striped table-bordered" style="width:100%">
-              <div class="">
+              <!-- <div class="">
                 <a href="<?= base_url('Aset/tambah') ?>" class="btn btn-warning mb-2">
                     <i class="fas fa-file-alt"></i>
                       Export PDF
                     </a>
-              </div>
+              </div> -->
                 <thead>
                   <tr>
                     <th scope="col">No</th>

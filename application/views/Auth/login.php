@@ -46,7 +46,7 @@
               <input type="username" id="username" name="username" class="form-control" placeholder="Username" value="<?= set_value('username'); ?>" />
               <div class="input-group-append">
                 <div class="input-group-text">
-                  <span class="fas fa-envelope"></span>
+                  <span class="fas fa-user"></span>
                 </div>
               </div>
             </div>
@@ -85,7 +85,7 @@
 
           <p class="mb-0 mt-1">
             <a href="<?= base_url('auth/register'); ?>" class="text-center"
-              >Daftar member baru</a
+              >Daftar akun baru</a
             >
           </p>
         </div>
