@@ -95,12 +95,12 @@
               <h5 class="text-center">Laporan Data Aset</h5>
               </div>
               <table class="table" id="laporanAset" class="table table-striped table-bordered" style="width:100%">
-              <!-- <div class="">
-                <a href="<?= base_url('Aset/tambah') ?>" class="btn btn-warning mb-2">
-                    <i class="fas fa-file-alt"></i>
+              <div class="">
+                <a href="<?= base_url('laporan/pdf') ?>" class="btn btn-warning mb-2">
+                    <i class="fas fa-file"></i>
                       Export PDF
                     </a>
-              </div> -->
+              </div>
                 <thead>
                   <tr>
                     <th scope="col">No</th>

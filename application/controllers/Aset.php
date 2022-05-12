@@ -106,4 +106,6 @@ class Aset extends CI_Controller {
 		$this->session->set_flashdata('message', 'Dihapus');
 		redirect('aset');
 	}
+
+	
 }

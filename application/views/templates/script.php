@@ -24,7 +24,7 @@
                 dom: 'Blfrtip',
                   buttons: [
                      { extend: 'excel', className: 'btn btn-sm btn-success mb-2' },
-                     { extend: 'pdf', className: 'btn btn-sm btn-warning mb-2' },
+                     // { extend: 'pdf', className: 'btn btn-sm btn-warning mb-2' },
                      { extend: 'print', className: 'btn btn-sm btn-secondary mb-2' }
                      ]
             });
