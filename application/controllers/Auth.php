@@ -31,10 +31,10 @@ class Auth extends CI_Controller {
 				if(password_verify($password, $user['password'])){
 					$data = [
 						'username' => $user['username'],
-						'role_id' => $user['role_id'],
+						'level' => $user['level'],
 					];
 					$this->session->set_userdata($data);
-					if($user['role_id'] == 'admin'){
+					if($user['level'] == 'admin'){
 						$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
 						Berhasil Login
 						</div>');

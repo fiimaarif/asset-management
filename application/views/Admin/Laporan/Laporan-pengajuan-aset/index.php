@@ -17,7 +17,7 @@
             <div class="row mb-2">
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-left">
-                  <li class="breadcrumb-item active">Laporan</li>
+                  <li class="breadcrumb-item active">Laporan Pengajuan Aset</li>
                 </ol>
               </div>
             </div>
@@ -29,35 +29,33 @@
           <div class="container-fluid">
             <div class="card p-2">
               <div class="card-header bg-info mb-1">
-              <h5 class="text-center">Laporan Data Aset</h5>
+              <h5 class="text-center">Laporan Pengajuan Aset</h5>
               </div>
               <table class="table" id="laporanAset" class="table table-striped table-bordered" style="width:100%">
               <div class="">
-                <a href="<?= base_url('laporan/pdf') ?>" class="btn btn-warning mb-2">
+                <a href="<?= base_url('laporan_pengajuan_aset/pdf') ?>" class="btn btn-warning mb-2">
                     <i class="fas fa-file"></i>
                       Export PDF
                     </a>
               </div>
-                <thead>
+                 <thead>
                   <tr>
                     <th scope="col">No</th>
                     <th scope="col">Nama Aset</th>
-                    <th scope="col">Kode Aset</th>
-                    <th scope="col">Satuan</th>
                     <th scope="col">Jumlah</th>
-                    <th scope="col">Ruangan</th>
+                    <th scope="col">Tanggal</th>
+                    <th scope="col">Keterangan</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php $i=1; ?>
-                  <?php foreach($aset as $ast) : ?>
+                  <?php foreach($pengajuan as $pjn) : ?>
                   <tr>
                     <th scope="row"><?= $i; ?></th>
-                    <td><?= $ast['nama_barang'] ?></td>
-                    <td><?= $ast['kode_barang'] ?></td>
-                    <td><?= $ast['satuan'] ?></td>
-                    <td><?= $ast['kuantitas'] ?></td>
-                    <td><?= $ast['kode_ruangan'] ?></td>
+                    <td><?= $pjn['nama_aset'] ?></td>
+                    <td><?= $pjn['jumlah'] ?></td>
+                    <td><?= $pjn['tanggal'] ?></td>
+                    <td><?= $pjn['keterangan'] ?></td>
                   </tr>
                   <?php $i++; ?>
                   <?php endforeach; ?>

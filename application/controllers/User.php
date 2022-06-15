@@ -31,7 +31,7 @@ class User extends CI_Controller {
 
 		$data['user'] = $this->db->get_where('user', ['username' =>
 		$this->session->userdata('username')])->row_array();
-		$datatitle['title'] = 'Admin | Tambah';
+		$datatitle['title'] = 'Users | Tambah';
 
 		$this->form_validation->set_rules('fullname', 'Full Name', 'required|trim');
 		$this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[user.username]');
@@ -69,13 +69,14 @@ class User extends CI_Controller {
 		$this->session->userdata('username')])->row_array();
 
 		$data['user'] = $this->User_model->getDataById($id);
-		$datatitle['title'] = 'Admin | Edit';
+		$datatitle['title'] = 'Users | Edit';
 
 		$this->form_validation->set_rules('fullname', 'Full Name', 'required|trim');
 		$this->form_validation->set_rules('username', 'Username', 'required|trim');
 		$this->form_validation->set_rules('password','Password','required|trim|min_length[6]',[
 			'min_length' => 'Password terlalu pendek, min.6 karakter'
 		]);
+		$this->form_validation->set_rules('level', 'Level', 'required|trim');
 		if($this->form_validation->run() === false) {
 			$this->load->view('templates/header.php',$datatitle);
 			$this->load->view('templates/navbar.php',$data);

@@ -93,19 +93,19 @@
                 </a>
                 </li>
                 <li class="nav-item">
-                <a href="<?=base_url('Aset_keluar') ?>" class="nav-link">
+                <a href="<?=base_url('Laporan_aset_masuk') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Laporan Aset Masuk</p>
                 </a>
                 </li>
                 <li class="nav-item">
-                <a href="<?=base_url('Aset_keluar') ?>" class="nav-link">
+                <a href="<?=base_url('Laporan_aset_keluar') ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Laporan Aset Keluar</p>
                 </a>
                 </li>
                 <li class="nav-item">
-                  <a href="<?=base_url('Pengajuan_aset') ?>" class="nav-link">
+                  <a href="<?=base_url('Laporan_pengajuan_aset') ?>" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Laporan Pengajuan Aset</p>
                   </a>
