@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 29 Apr 2022 pada 12.16
+-- Waktu pembuatan: 15 Jun 2022 pada 09.24
 -- Versi server: 10.3.16-MariaDB
 -- Versi PHP: 7.3.7
 
@@ -42,8 +42,49 @@ CREATE TABLE `aset` (
 --
 
 INSERT INTO `aset` (`id`, `nama_barang`, `kode_barang`, `satuan`, `kuantitas`, `kode_ruangan`) VALUES
-(2, 'Lenovo', 'LP 0122', 'Unit', '3', 'Pelayanan'),
-(8, 'Monitor', 'MN 0233', 'Unit', '3', 'Pembukuan');
+(9, 'CPU', 'CP 0021', 'Unit', '4', 'Pelayanan'),
+(10, 'Monitor', 'MN 0233', 'Unit', '4', 'PDAM 011243');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `aset_keluar`
+--
+
+CREATE TABLE `aset_keluar` (
+  `id` int(11) NOT NULL,
+  `id_transaksi` varchar(100) NOT NULL,
+  `tanggal` date NOT NULL,
+  `kode_aset` varchar(100) NOT NULL,
+  `nama_aset` varchar(100) NOT NULL,
+  `jumlah` varchar(100) NOT NULL,
+  `tujuan` varchar(100) NOT NULL,
+  `satuan` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `aset_masuk`
+--
+
+CREATE TABLE `aset_masuk` (
+  `id` int(11) NOT NULL,
+  `id_transaksi` varchar(100) NOT NULL,
+  `tanggal` date NOT NULL,
+  `kode_aset` varchar(100) NOT NULL,
+  `nama_aset` varchar(100) NOT NULL,
+  `pengirim` varchar(100) NOT NULL,
+  `jumlah` varchar(100) NOT NULL,
+  `satuan` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `aset_masuk`
+--
+
+INSERT INTO `aset_masuk` (`id`, `id_transaksi`, `tanggal`, `kode_aset`, `nama_aset`, `pengirim`, `jumlah`, `satuan`) VALUES
+(2, '00332', '2022-06-14', '009112', 'coba', 'coba', '5', 'Unit');
 
 -- --------------------------------------------------------
 
@@ -53,7 +94,6 @@ INSERT INTO `aset` (`id`, `nama_barang`, `kode_barang`, `satuan`, `kuantitas`, `
 
 CREATE TABLE `location` (
   `id` int(11) NOT NULL,
-  `location_code` varchar(128) NOT NULL,
   `location_name` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -61,11 +101,50 @@ CREATE TABLE `location` (
 -- Dumping data untuk tabel `location`
 --
 
-INSERT INTO `location` (`id`, `location_code`, `location_name`) VALUES
-(2, 'PDAM 011244', 'Keungan'),
-(3, 'PDAM 011243', 'Pembukuan'),
-(4, 'PDAM 011242', 'Pelayanan'),
-(6, 'PDAM 011241', 'Bagian Umum');
+INSERT INTO `location` (`id`, `location_name`) VALUES
+(2, 'Keungan edit'),
+(3, 'Pembukuan'),
+(4, 'Pelayanan');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `pengajuan`
+--
+
+CREATE TABLE `pengajuan` (
+  `id` int(11) NOT NULL,
+  `nama_aset` varchar(100) NOT NULL,
+  `jumlah` varchar(100) NOT NULL,
+  `tanggal` date NOT NULL,
+  `keterangan` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `pengajuan`
+--
+
+INSERT INTO `pengajuan` (`id`, `nama_aset`, `jumlah`, `tanggal`, `keterangan`) VALUES
+(2, 'coba2', '5', '2022-06-14', 'edit'),
+(3, 'coba', '5', '2022-06-14', 'keter');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `satuan`
+--
+
+CREATE TABLE `satuan` (
+  `id` int(11) NOT NULL,
+  `satuan` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `satuan`
+--
+
+INSERT INTO `satuan` (`id`, `satuan`) VALUES
+(2, 'Unit');
 
 -- --------------------------------------------------------
 
@@ -79,7 +158,7 @@ CREATE TABLE `user` (
   `fullname` varchar(128) NOT NULL,
   `image` varchar(128) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `level` enum('admin','user') NOT NULL
+  `level` enum('direktur','admin','petugas') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -88,7 +167,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `username`, `fullname`, `image`, `password`, `level`) VALUES
 (10, 'admin', 'Administrator', 'default.png', '$2y$10$.TwbUM8B8GDrjCigJyNjxe4nSQvtdVTkLcTERGeTP8YYjk57dzsqW', 'admin'),
-(13, 'admin2', 'Administrator2', 'default.png', '$2y$10$aleay3CofX7WI3zeldOov.PJ59YphARrQRJUnAnt.ZNb/GKpDal5u', 'user');
+(16, 'petugas', 'petugas', 'default.png', '$2y$10$M6F9Dx8sMW6ivyH4hi8fquh3D24E8LN.JJKQfCkQytVJSR0VR.N4C', 'petugas'),
+(17, 'petugas1', 'petugas1', 'default.png', '$2y$10$3bQ2d0lKK9Jj9qgfmMhjEOeqfuvYJzeP9LzEiObcjw1c95uMd1zrW', 'petugas');
 
 -- --------------------------------------------------------
 
@@ -120,9 +200,33 @@ ALTER TABLE `aset`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `aset_keluar`
+--
+ALTER TABLE `aset_keluar`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `aset_masuk`
+--
+ALTER TABLE `aset_masuk`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `location`
 --
 ALTER TABLE `location`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `pengajuan`
+--
+ALTER TABLE `pengajuan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `satuan`
+--
+ALTER TABLE `satuan`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -145,7 +249,19 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT untuk tabel `aset`
 --
 ALTER TABLE `aset`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT untuk tabel `aset_keluar`
+--
+ALTER TABLE `aset_keluar`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT untuk tabel `aset_masuk`
+--
+ALTER TABLE `aset_masuk`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `location`
@@ -154,10 +270,22 @@ ALTER TABLE `location`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT untuk tabel `pengajuan`
+--
+ALTER TABLE `pengajuan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT untuk tabel `satuan`
+--
+ALTER TABLE `satuan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_role`

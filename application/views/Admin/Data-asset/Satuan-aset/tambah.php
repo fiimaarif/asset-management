@@ -6,7 +6,7 @@
             <div class="row mb-2">
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-left">
-                  <li class="breadcrumb-item"><a href="<?= base_url('Location') ?>">Lokasi Aset</a></li>
+                  <li class="breadcrumb-item"><a href="<?= base_url('Satuan_aset') ?>">Satuan Aset</a></li>
                   <li class="breadcrumb-item active">tambah</li>
                 </ol>
               </div>
@@ -17,7 +17,7 @@
         <!-- Main content -->
         <div class="content">
           <div class="container-fluid">
-            <a href="<?= base_url('Location') ?>" class="btn btn-info mb-2">
+            <a href="<?= base_url('Satuan_aset') ?>" class="btn btn-info mb-2">
               <i class="fas fa-arrow-left"></i>
                 Kembali
             </a>
@@ -28,11 +28,11 @@
               <!-- error message -->
              
 
-            <?= form_open_multipart('Location/tambah'); ?>
+            <?= form_open_multipart('Satuan_aset/tambah'); ?>
               <div class="form-group">
-                <label for="location_name">Nama Ruangan</label>
-                <input type="text" class="form-control" id="location_name" name="location_name" placeholder="Masukkan Nama Ruangan">
-                <small class="form-text text-danger"><?= form_error('location_name') ?></small>
+                <label for="satuan">Satuan</label>
+                <input type="text" class="form-control" id="satuan" name="satuan" placeholder="Masukkan Satuan">
+                <small class="form-text text-danger"><?= form_error('satuan') ?></small>
               </div>
             <button type="submit" class="btn btn-primary mt-3"><i class="fas fa-paper-plane"></i> Save</button>
             </form>

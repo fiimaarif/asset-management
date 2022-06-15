@@ -13,8 +13,7 @@ class User extends CI_Controller {
 	}
 
 
-	public function index()
-	{
+	public function index() {
 		$data['user'] = $this->db->get_where('user', ['username' =>
 		$this->session->userdata('username')])->row_array();
 
@@ -23,6 +22,7 @@ class User extends CI_Controller {
 
 		$this->load->view('templates/header.php',$datatitle);
 		$this->load->view('templates/navbar.php',$data);
+		$this->load->view('templates/sidebar.php',$data);
 		$this->load->view('Admin/User/index',$data2);
 		$this->load->view('templates/footer.php');
 		$this->load->view('templates/script.php');
@@ -42,6 +42,7 @@ class User extends CI_Controller {
 		if($this->form_validation->run() === false) {
 		$this->load->view('templates/header.php',$datatitle);
 		$this->load->view('templates/navbar.php',$data);
+		$this->load->view('templates/sidebar.php',$data);
 		$this->load->view('Admin/User/tambah.php');
 		$this->load->view('templates/footer.php');
 		$this->load->view('templates/script.php');
@@ -78,6 +79,7 @@ class User extends CI_Controller {
 		if($this->form_validation->run() === false) {
 			$this->load->view('templates/header.php',$datatitle);
 			$this->load->view('templates/navbar.php',$data);
+			$this->load->view('templates/sidebar.php',$data);
 			$this->load->view('Admin/User/edit.php', $data);
 			$this->load->view('templates/footer.php');
 			$this->load->view('templates/script.php');

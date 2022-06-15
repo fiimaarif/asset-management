@@ -1,14 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Location extends CI_Controller {
+class Satuan_aset extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
 		// untuk user access agar tidak bisa masuk ke dashboard tanpa login
 		is_logged_in();
 
-		$this->load->model('Location_model');
+		$this->load->model('Satuan_model');
 		$this->load->library('form_validation');
 	}
 
@@ -18,13 +18,13 @@ class Location extends CI_Controller {
 		$data['user'] = $this->db->get_where('user', ['username' =>
 		$this->session->userdata('username')])->row_array();
 
-		$data2['location'] = $this->Location_model->getAllLocation();
-		$datatitle['title'] = 'Asset Management | Location';
+		$data2['satuan'] = $this->Satuan_model->getAllSatuan();
+		$datatitle['title'] = 'Asset Management | Satuan Aset';
 
 		$this->load->view('templates/header.php',$datatitle);
 		$this->load->view('templates/navbar.php',$data);
 		$this->load->view('templates/sidebar.php',$data);
-		$this->load->view('Admin/Asset-location/index', $data2);
+		$this->load->view('Admin/Data-asset/Satuan-aset/index', $data2);
 		$this->load->view('templates/footer.php');
 		$this->load->view('templates/script.php');
 	}
@@ -33,24 +33,24 @@ class Location extends CI_Controller {
 
 		$data['user'] = $this->db->get_where('user', ['username' =>
 		$this->session->userdata('username')])->row_array();
-		$datatitle['title'] = 'Asset Location | Tambah';
+		$datatitle['title'] = 'Satuan Aset | Tambah';
 
-		$this->form_validation->set_rules('location_name', 'Nama Kategori', 'required|trim');
+		$this->form_validation->set_rules('satuan', 'Satuan', 'required|trim');
 		if($this->form_validation->run() === false) {
 			$this->load->view('templates/header.php',$datatitle);
 			$this->load->view('templates/navbar.php',$data);
 			$this->load->view('templates/sidebar.php',$data);
-			$this->load->view('Admin/Asset-location/tambah.php');
+			$this->load->view('Admin/Data-asset/Satuan-aset/tambah.php');
 			$this->load->view('templates/footer.php');
 			$this->load->view('templates/script.php');
 		}else{
 			
 			$data = [
-				'location_name' => htmlspecialchars($this->input->post('location_name',true)),
+				'satuan' => htmlspecialchars($this->input->post('satuan',true)),
 			];
-			$this->db->insert('location',$data);
+			$this->db->insert('satuan',$data);
 			$this->session->set_flashdata('message', 'Ditambahkan');
-			redirect('location');
+			redirect('satuan_aset');
 
 	}
 }
@@ -61,33 +61,33 @@ class Location extends CI_Controller {
 		$data['user'] = $this->db->get_where('user', ['username' =>
 		$this->session->userdata('username')])->row_array();
 
-		$data['location'] = $this->Location_model->getDataById($id);
-		$datatitle['title'] = 'Asset Location | Edit';
+		$data['satuan'] = $this->Satuan_model->getDataById($id);
+		$datatitle['title'] = 'Satuan Aset | Edit';
 
-		$this->form_validation->set_rules('location_name', 'Nama Kategori', 'required|trim');
+		$this->form_validation->set_rules('satuan', 'Nama Kategori', 'required|trim');
 		if($this->form_validation->run() === false) {
 			$this->load->view('templates/header.php',$datatitle);
 			$this->load->view('templates/navbar.php',$data);
 			$this->load->view('templates/sidebar.php',$data);
-			$this->load->view('Admin/Asset-location/edit.php', $data);
+			$this->load->view('Admin/Data-asset/Satuan-aset/edit.php', $data);
 			$this->load->view('templates/footer.php');
 			$this->load->view('templates/script.php');
 		}else{
 			$data = [
-				'location_name' => htmlspecialchars($this->input->post('location_name',true)),
+				'satuan' => htmlspecialchars($this->input->post('satuan',true)),
 			];
 			
 			$this->db->where('id', $this->input->post('id'));
-            $this->db->update('location', $data);
+            $this->db->update('satuan', $data);
 			$this->session->set_flashdata('message', 'Diubah');
-			redirect('location');
+			redirect('Satuan_aset');
 
 	}
 }
 
 	public function hapus($id){
-		$this->Location_model->hapusData($id);
+		$this->Satuan_model->hapusData($id);
 		$this->session->set_flashdata('message', 'Dihapus');
-		redirect('location');
+		redirect('Satuan_aset');
 	}
 }

@@ -25,6 +25,7 @@ class Laporan extends CI_Controller {
 
 		$this->load->view('templates/header.php',$datatitle);
 		$this->load->view('templates/navbar.php',$data);
+		$this->load->view('templates/sidebar.php',$data);
 		$this->load->view('Admin/Laporan/index',$aset);
 		$this->load->view('templates/footer.php');
 		$this->load->view('templates/script.php');

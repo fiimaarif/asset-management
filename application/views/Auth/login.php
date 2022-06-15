@@ -70,6 +70,14 @@
             <small class="text-danger">
               <?= form_error('password'); ?>
             </small>
+            <div class="form-group">
+              <select name="level" class="form-control" required>
+                <option value="">Pilih Level User</option>
+                <option value="direktur">Direktur</option>
+                <option value="admin">Admin</option>
+                <option value="petugas">Petugas</option>
+              </select>
+					  </div>
             <div class="row">
               <!-- /.col -->
               <div class="col-4">
@@ -83,11 +91,11 @@
 
           <!-- /.social-auth-links -->
 
-          <p class="mb-0 mt-1">
+          <!-- <p class="mb-0 mt-1">
             <a href="<?= base_url('auth/register'); ?>" class="text-center"
               >Daftar akun baru</a
             >
-          </p>
+          </p> -->
         </div>
         <!-- /.login-card-body -->
       </div>

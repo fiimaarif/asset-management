@@ -9,7 +9,6 @@ class Aset extends CI_Controller {
 		is_logged_in();
 
 		$this->load->model('Aset_model');
-		$this->load->model('Location_model');
 		$this->load->library('form_validation');
 	}
 
@@ -24,6 +23,7 @@ class Aset extends CI_Controller {
 
 		$this->load->view('templates/header.php',$datatitle);
 		$this->load->view('templates/navbar.php',$data);
+		$this->load->view('templates/sidebar.php',$data);
 		$this->load->view('Admin/Data-asset/index',$data2);
 		$this->load->view('templates/footer.php');
 		$this->load->view('templates/script.php');
@@ -36,22 +36,23 @@ class Aset extends CI_Controller {
 		$data2['alldata'] = $this->Aset_model->getAllData();
 		$datatitle['title'] = 'Asset | Tambah';
 
-		$this->form_validation->set_rules('nama_barang', 'Nama Barang', 'required|trim');
 		$this->form_validation->set_rules('kode_barang', 'Kode Barang', 'required|trim');
+		$this->form_validation->set_rules('nama_barang', 'Nama Barang', 'required|trim');
 		$this->form_validation->set_rules('satuan', 'Satuan', 'required|trim');
 		$this->form_validation->set_rules('kuantitas', 'Kuantitas', 'required|trim');
 		$this->form_validation->set_rules('kode_ruangan', 'Kode Ruangan', 'required|trim');
 		if($this->form_validation->run() === false) {
 			$this->load->view('templates/header.php',$datatitle);
 			$this->load->view('templates/navbar.php',$data);
+			$this->load->view('templates/sidebar.php',$data);
 			$this->load->view('Admin/Data-asset/tambah.php',$data2);
 			$this->load->view('templates/footer.php');
 			$this->load->view('templates/script.php');
 		}else{
 			
 			$data = [
-				'nama_barang' => htmlspecialchars($this->input->post('nama_barang',true)),
 				'kode_barang' => htmlspecialchars($this->input->post('kode_barang',true)),
+				'nama_barang' => htmlspecialchars($this->input->post('nama_barang',true)),
 				'satuan' => htmlspecialchars($this->input->post('satuan',true)),
 				'kuantitas' => htmlspecialchars($this->input->post('kuantitas',true)),
 				'kode_ruangan' => htmlspecialchars($this->input->post('kode_ruangan',true)),
@@ -70,24 +71,26 @@ class Aset extends CI_Controller {
 		$this->session->userdata('username')])->row_array();
 
 		$data['aset'] = $this->Aset_model->getDataById($id);
+		$data2['alldata'] = $this->Aset_model->getAllData();
 		$datatitle['title'] = 'Asset | Edit';
 
 		
-		$this->form_validation->set_rules('nama_barang', 'Nama Barang', 'required|trim');
 		$this->form_validation->set_rules('kode_barang', 'Kode Barang', 'required|trim');
+		$this->form_validation->set_rules('nama_barang', 'Nama Barang', 'required|trim');
 		$this->form_validation->set_rules('satuan', 'Satuan', 'required|trim');
 		$this->form_validation->set_rules('kuantitas', 'Kuantitas', 'required|trim');
 		$this->form_validation->set_rules('kode_ruangan', 'Kode Ruangan', 'required|trim');
 		if($this->form_validation->run() === false) {
 			$this->load->view('templates/header.php',$datatitle);
 			$this->load->view('templates/navbar.php',$data);
-			$this->load->view('Admin/Data-asset/edit.php', $data);
+			$this->load->view('templates/sidebar.php',$data);
+			$this->load->view('Admin/Data-asset/edit.php',$data, $data2);
 			$this->load->view('templates/footer.php');
 			$this->load->view('templates/script.php');
 		}else{
 			$data = [
-				'nama_barang' => htmlspecialchars($this->input->post('nama_barang',true)),
 				'kode_barang' => htmlspecialchars($this->input->post('kode_barang',true)),
+				'nama_barang' => htmlspecialchars($this->input->post('nama_barang',true)),
 				'satuan' => htmlspecialchars($this->input->post('satuan',true)),
 				'kuantitas' => htmlspecialchars($this->input->post('kuantitas',true)),
 				'kode_ruangan' => htmlspecialchars($this->input->post('kode_ruangan',true)),

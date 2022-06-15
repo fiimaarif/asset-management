@@ -1,4 +1,3 @@
-      <div class="wrapper">
       <nav class="main-header navbar navbar-expand navbar-dark navbar-cyan">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
@@ -28,7 +27,4 @@
           </a>
           
       </li>
-      
-    </ul>
-   
-      </nav>
+    </nav>
